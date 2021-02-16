@@ -42,3 +42,14 @@ app.get('/collection/:collectionName', (req, res, next)=>{
         res.send(results)
     })
 })
+
+//posting new data to the collection
+app.get('/collection/:collectionName/:id', (req, res, next) => { 
+    req.collection.findOne(
+        { _id: new ObjectID(req.params.id) }, 
+        (e, result) => { 
+            if (e) return next(e)        
+            res.send(result) 
+        }
+    ) 
+})
