@@ -23,3 +23,14 @@ let db
 MongoClient.connect('mongodb+srv://Abubakarkachallah:Abba2001@cluster0.mhdye.mongodb.net', (err, client)=>{
     db = client.db('webstore')
 })
+
+//display a message or root path to show that API is working
+app.get('/', (req, res, next) => {
+    res.send('Select a collection, e.g., collection/messages')
+})
+
+//get collection
+app.param('collectionName', (req, res, next, collectionName)=>{
+    req.collection = db.collection(collectionName)
+    return next()
+})
