@@ -77,3 +77,7 @@ app.delete('/collection/:collectionName/:id', (req, res, next) =>{
         }
     )
 })
+
+app.listen(port, ()=>{
+    console.log('Express js server runnning')
+})
