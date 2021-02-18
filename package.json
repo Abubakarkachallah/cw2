@@ -7,10 +7,6 @@
     "test": "start",
     "start": "node server.js"
   },
-  "dependencies": {
-    "express": "^4.17.1",
-    "mongodb": "^3.6.4"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Abubakarkachallah/cw2.git"
@@ -20,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/Abubakarkachallah/cw2/issues"
   },
-  "homepage": "https://github.com/Abubakarkachallah/cw2#readme"
+  "homepage": "https://github.com/Abubakarkachallah/cw2#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^3.6.4"
+  }
 }
