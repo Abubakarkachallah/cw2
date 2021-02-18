@@ -42,8 +42,8 @@ app.get('/', (req, res, next) => {
 app.get('/collection/:collectionName/:name/:phone', (req, res, next) => {
     req.collection.find({
         name: (req.params.name),
-        phone: (req.params.phone)
-    }).toArray((e, result) => {
+        phone: (req.params.phone),
+            }).toArray((e, result) => {
         if (e) return next(e)
         res.send(result)
     })
