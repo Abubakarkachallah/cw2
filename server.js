@@ -44,14 +44,11 @@ app.get('/collection/:collectionName', (req, res, next)=>{
 })
 
 //posting new data to the collection
-app.post('/collection/:collectionName/:id', (req, res, next) => { 
-    req.collection.findOne(
-        { _id: new ObjectID(req.params.id) }, 
-        (e, result) => { 
-            if (e) return next(e)        
-            res.send(result) 
-        }
-    ) 
+app.post('/collection/:collectionName', (req, res, next) => {
+    req.collection.insert(req.body, (e, results) => { 
+        if (e) return next(e)    
+        res.send(results.ops) 
+    })
 })
 
 //update object
