@@ -201,7 +201,20 @@
                     }
                 },
                 submitOrder() {
-                    alert("Order submitted!")
+                    alert("order submitted");
+                    fetch('https://abubakar-kachallah.herokuapp.com/collection/orders',{
+                        method: "POST",
+                        headers: {
+                            "Content-Type": 'application/json',
+                        },
+                        mode: "cors",
+                        cache: "no-store",
+                        body: JSON.stringify(store.order)
+                    }).then(response=> response.json())
+                    .then(responseJSON=> {})
+                    .catch((error)=>{
+                        console.log(error);
+                    })
                 }
             },
             computed: {

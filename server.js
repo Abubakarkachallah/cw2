@@ -3,7 +3,6 @@ const exp = require('express')
 const { ObjectID } = require('mongodb')
 var path = require("path");
 
-//const bodyParser = require('body-parser')
 
 //create an express js instance
 const app = exp()
@@ -11,6 +10,7 @@ const app = exp()
 //config express js
 app.use(exp.json())
 app.use(exp.static('public'))
+
 const port = process.env.PORT || 3000
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Headers", "*");
@@ -38,11 +38,22 @@ app.get('/', (req, res, next) => {
     next()
 })
 
-// // middleware to handle images
-// app.get('/collection/lessons/img', (req, res, next) => {
-//     var imagePath = path.resolve(__dirname, "img"); 
-//     app.use("/img", express.static(imagePath));
-// })
+//retrieve customer orders by name and phone
+app.get('/collection/:collectionName/:name/:phone', (req, res, next) => {
+    req.collection.find({
+        name: (req.params.name),
+        phone: (req.params.phone)
+    }).toArray((e, result) => {
+        if (e) return next(e)
+        res.send(result)
+    })
+})
+
+ // middleware to handle images
+ app.get('/collection/lessons/img', (req, res, next) => {
+     var imagePath = path.resolve(__dirname, "img"); 
+     app.use("/img", exp.static(imagePath));
+ })
 
 
 
